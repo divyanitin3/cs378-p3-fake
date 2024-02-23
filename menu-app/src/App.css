@@ -1,0 +1,94 @@
+/* 
+  Style your elements by creating CSS classes here.
+  Below, you can see an example of a class called "menu" that changes the color of the text to blue. Modify according to your needs.
+*/
+.app-background {
+  background-color: #f8d2de;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo img {
+  height: 300px; 
+}
+.subheading {
+  font-family: 'Satisfy', cursive;
+  font-size: 150%;
+  text-align: center;
+  color: #1e9dff;
+}
+
+.subheading2 {
+  color: #024379;
+  font-weight: bold;
+  text-align: center;
+}
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2%;
+}
+
+.menu-row {
+  display: flex;
+  margin: 1%;
+  align-items: stretch;
+}
+
+.menu-image-col img {
+  max-width: 200px;
+  max-height: 200px;
+  width: 100%;
+  border-radius: .3rem;
+  border: 2px solid #ccc;
+}
+
+.menu-detail-col {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2%;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.menu-card-body {
+  padding: 2%;
+}
+
+.menu-card-title {
+  color: #4a3985;
+  margin-bottom: .5rem;
+}
+
+.menu-card-text {
+  color: #555;
+}
+
+.menu-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2%;
+  margin-top: auto;
+}
+
+.menu-price-text {
+  color: #1e7e35;
+  font-weight: bold;
+}
+
+.menu-add-btn {
+  background-color: #a50616;
+  color: white;
+  border-radius: .3rem;
+  border: none;
+  padding: .375rem .75rem;
+}
+
+.menu-add-btn:hover {
+  background-color: #ff9ba7;
+}
+
+
