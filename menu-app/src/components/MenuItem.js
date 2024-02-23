@@ -1,11 +1,12 @@
 import React from 'react';
+import {useState} from 'react';
 
 
 // This is a functional component that represents a single menu item. It currently takes in the title and displays it in an h2 element.
 // Modify the component to take in all the other properties of a menu item you need and display them in the component.
 // Use bootstrap to style the elements so that it looks like the mockup in the assignment.
 // Hint: You can use the image name to get the image from the images folder.
-const MenuItem = ({ title, description, imageName, price }) => {
+const MenuItem = ({ title, description, imageName, price, quantity, onAdd, onRemove}) => {
     return (
         <div className="menu-container">
             <div className="menu-row">
@@ -22,11 +23,13 @@ const MenuItem = ({ title, description, imageName, price }) => {
                         <h5 className="menu-card-title">{title}</h5>
                         <p className="menu-card-text">{description}</p>
                     </div>
-                    <div className="menu-card-footer d-flex justify-content-between align-items-center">
+                    <div className="menu-card-footer">
                         <p className="menu-price-text">Price: ${price}</p>
-                        <button className="menu-add-btn rounded-3" style={{color: 'white' }}>
-                            Add
-                        </button>
+                        <div className="quantity-control">
+                            <button className="quantity-btn circular" onClick={onRemove}> - </button>
+                                <span className="quantity"> {quantity} </span>
+                            <button className="quantity-btn circular" onClick={onAdd}> + </button>
+                        </div>
                     </div>
                 </div>
             </div>

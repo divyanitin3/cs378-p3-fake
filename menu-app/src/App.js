@@ -1,6 +1,7 @@
 import './App.css';
 import MenuItem from './components/MenuItem';
 import Header from './components/Header';
+import { useState } from 'react';
 //import 'bootstrap/dist/css/bootstrap.min.css'; // This imports bootstrap css styles. You can use bootstrap or your own classes by using the className attribute in your elements.
 
 // Menu data. An array of objects where each object represents a menu item. Each menu item has an id, title, description, image name, and price.
@@ -87,6 +88,57 @@ const headerMenu = [
 ]
 
 function App() {
+  const [shoppingCart, updateShoppingCart] = useState(menuItems.map(product => ({ ...product, count: 0 })));
+const [totalPrice, updateTotalPrice] = useState(0);
+
+const addItemToCart = (productId) => {
+  updateShoppingCart(previousCart => {
+    const newCart = previousCart.map(product =>
+      (product.id === productId) ? { ...product, count: product.count + 1 } : product
+    );
+
+    refreshTotalPrice(newCart);
+
+    return newCart;
+  });
+};
+
+const removeItemFromCart = (productId) => {
+  updateShoppingCart(previousCart => {
+    const newCart = previousCart.map(product =>
+      (product.id === productId && product.count > 0) ? { ...product, count: product.count - 1 } : product
+    );
+
+    refreshTotalPrice(newCart);
+
+    return newCart;
+  });
+};
+
+const resetCart = () => {
+  updateShoppingCart(previousCart => previousCart.map(product => ({ ...product, count: 0 })));
+  
+  updateTotalPrice(0);
+};
+
+const refreshTotalPrice = (newCart) => {
+  const total = newCart.reduce((accumulator, product) => accumulator + product.count * product.price, 0);
+
+  updateTotalPrice(total);
+};
+
+const placeOrder = () => {
+  const itemsForOrder = shoppingCart.filter(product => product.count > 0);
+
+  if (itemsForOrder.length === 0) {
+    alert('No items in cart.');
+  } else {
+    const orderDetails = itemsForOrder.map(product => `${product.count} x ${product.title}`).join('\n');
+    alert(`Order Placed!\n\n${orderDetails}\n\nTotal: $${totalPrice.toFixed(2)}`);
+    resetCart();
+  }
+};
+
   return (
     <div className="app-background">
       {headerMenu.map((header) => (
@@ -104,8 +156,18 @@ function App() {
             description={menuItem.description}
             imageName={menuItem.imageName}
             price={menuItem.price}
+            quantity={shoppingCart.find(product => product.id === menuItem.id).count}
+            onAdd={() => addItemToCart(menuItem.id)}
+            onRemove={() => removeItemFromCart(menuItem.id)}
           />
         ))}
+      </div>
+      <div className="cart" >
+        <p>Subtotal: ${totalPrice.toFixed(2)}</p>
+        <button className="rounded-3" style={{ backgroundColor: '#c19bf2' }} onClick={placeOrder}>
+          Order
+        </button>
+        <button className="rounded-3" onClick={resetCart}>Clear All</button>
       </div>
     </div>
   );

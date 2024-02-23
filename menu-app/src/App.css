@@ -11,7 +11,7 @@
   align-items: center;
 }
 .logo img {
-  height: 300px; 
+  height: 150px; 
 }
 .subheading {
   font-family: 'Satisfy', cursive;
@@ -24,6 +24,7 @@
   color: #024379;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 10%;
 }
 .menu-container {
   display: flex;
@@ -33,36 +34,39 @@
 
 .menu-row {
   display: flex;
-  margin: 1%;
+  margin: 1% 5%;
   align-items: stretch;
 }
 
 .menu-image-col img {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 100px;
+  max-height: 100px;
   width: 100%;
-  border-radius: .3rem;
-  border: 2px solid #ccc;
+  border-radius: .6rem;
+  border: 6px solid #ffefef;
 }
 
 .menu-detail-col {
   display: flex;
   flex-direction: column;
-  padding-left: 2%;
+  padding-left: 3%;
   justify-content: space-between;
-  flex: 1;
+  flex:1;
 }
-
 .menu-card-body {
-  padding: 2%;
+  align-self: flex-start; /* This aligns the card body to the top */
+  padding: 5px 0; /* Adjust padding as needed */
 }
-
 .menu-card-title {
   color: #4a3985;
+  font-size: 17px;
   margin-bottom: .5rem;
+  margin-top: .1rem;
 }
 
 .menu-card-text {
+  margin-top: .5rem;
+  font-size: 12px;
   color: #555;
 }
 
@@ -70,25 +74,48 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 2%;
   margin-top: auto;
 }
 
 .menu-price-text {
+  margin-top: .3rem;
+  font-size: 13px;
   color: #1e7e35;
   font-weight: bold;
 }
 
-.menu-add-btn {
-  background-color: #a50616;
-  color: white;
-  border-radius: .3rem;
-  border: none;
-  padding: .375rem .75rem;
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  height: 100%;
 }
 
-.menu-add-btn:hover {
-  background-color: #ff9ba7;
+.quantity {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px; 
+  margin: 0 5px;
+}
+
+.quantity-btn.circular {
+  border: 1px solid black;
+  color: black;
+  font-size: 14px;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+}
+
+.cart {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
 }
 
 
